@@ -207,8 +207,9 @@
 					$('#question8').val().trim(),
 					$('#question9').val().trim(),
 					$('#question10').val().trim()
-				]
-			};
+                ]
+            };
+            console.log(userInput);
 
 			$.post('/api/friends', userInput)
       		.done(function(data) {
