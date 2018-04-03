@@ -20,7 +20,7 @@ module.exports = function (app) {
             var diff = 0;
             
             for (var x = 0; x < userResponses.length; x++) {
-                diff += Math.abs(firends[i].answers[x] - userResponses[x]);
+                diff += Math.abs(friends[i].answers[x] - userResponses[x]);
             }
             console.log("Difference = " + diff);
 
