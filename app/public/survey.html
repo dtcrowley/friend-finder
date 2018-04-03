@@ -8,6 +8,22 @@
     <title>Friend Finder - Survey</title>
 </head>
 <body class="bg-primary">
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Closest Friend Match</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="userMatch"></p>
+                <p id="userMatchImage"></p>
+            </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="jumbotron" style="margin-top: 60px;">
             <h2 class="display-4 text-primary" style="text-align: center;">Friend Finder Survey</h2>
@@ -158,7 +174,51 @@
                 </div>
             </div>  
         </div>
-        <p class="text-white"><a href="#" class="text-white">Friends API List</a> | <a href ="#" class="text-white">GitHub Repo</a></p>
+        <p class="text-white"><a href="/api/friends" class="text-white">Friends API List</a> | <a href ="https://github.com/dtcrowley/friend-finder" class="text-white">GitHub Repo</a> | <a href = "/" class="text-white">Home</a></p>
     </div>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$('select').material_select();
+
+			$('.modal').modal({
+				dismissible: false, 
+				opacity: .5, 
+				inDuration: 300, 
+				outDuration: 200, 
+				startingTop: '4%', 
+				endingTop: '10%' // 
+			});
+		});
+
+		$('#submitButton').on('click', function(event) {
+			event.preventDefault();
+
+			var userInput = {
+				name: $('#nameInput').val().trim(),
+				photo: $('#linkInput').val().trim(),
+				scores:[
+					$('#question1').val().trim(),
+					$('#question2').val().trim(),
+					$('#question3').val().trim(),
+					$('#question4').val().trim(),
+					$('#question5').val().trim(),
+					$('#question6').val().trim(),
+					$('#question7').val().trim(),
+					$('#question8').val().trim(),
+					$('#question9').val().trim(),
+					$('#question10').val().trim()
+				]
+			};
+
+			$.post('/api/friends', userInput)
+      		.done(function(data) {
+
+      			$('#userMatch').html(data.matchName);
+		    	$("#userMatchImage").attr("src", data.matchImage);
+
+      			$('.modal').modal('open');
+      		});
+		});
+	</script>
 </body>
 </html>
