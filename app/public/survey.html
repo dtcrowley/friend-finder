@@ -15,13 +15,13 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Closest Friend Match</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalClose">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <p id="userMatch"></p>
-                <p id="userMatchImage"></p>
+                <img id="userMatchImage" style="width: 450px; height: 300px; margin-left: 8px;"></img>
             </div>
             </div>
         </div>
@@ -180,14 +180,6 @@
     </div>
     <script type="text/javascript">
 		$(document).ready(function() {
-            // $(".modal").modal({
-			// 	dismissible: false, 
-			// 	opacity: .5, 
-			// 	inDuration: 300, 
-			// 	outDuration: 200, 
-			// 	startingTop: "4%", 
-			// 	endingTop: "10%"
-			// });
 		});
 
 		$("#submitButton").on("click", function(event) {
@@ -211,13 +203,32 @@
             $.post("/api/friends", userInput)
       		.done(function(data) {
 
-                  $("#userMatch").html(data.matchName);
+                $("#userMatch").html(data.matchName);
                 //   check on image
 		    	$("#userMatchImage").attr("src", data.matchImage);
 
       			$(".modal").show();
       		});
-		});
+        });
+        
+        $("#modalClose").on("click", function(event) {
+            event.preventDefault();
+            $(".modal").hide();
+            name= $("#nameInput").val("");
+            photo= $("#linkInput").val("");
+            scores=[
+                $("#question1").val(""),
+                $("#question2").val(""),
+                $("#question3").val(""),
+                $("#question4").val(""),
+                $("#question5").val(""),
+                $("#question6").val(""),
+                $("#question7").val(""),
+                $("#question8").val(""),
+                $("#question9").val(""),
+                $("#question10").val("")
+            ];
+        });
 	</script>
 </body>
 </html>
