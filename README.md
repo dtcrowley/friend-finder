@@ -1,6 +1,6 @@
 # friend-finder
 
-Friend Finder is an app that compares a user's answers to a series of survey questions to those of other users in order to determine potential compatibility. 
+Friend Finder is an app that compares a user's answers to a series of survey questions to the answers of other users in order to determine potential compatibility. 
 
 The answers are given a value (1-5, from "Strongly Disagree" to "Strongly Agree"), and the sum of those answer values for each user are compared against those of others. The closer the sum between users, the higher potential compatibility.
 
