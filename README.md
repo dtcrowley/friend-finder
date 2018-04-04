@@ -6,4 +6,4 @@ The answers are given a value (1-5, from "Strongly Disagree" to "Strongly Agree"
 
 In order to complete the survey questions, simply click on the "Go To Survey" button on the home page. Once you have selected an answer to each question, click the "Submit Survey" button at the bottom of the page. Your results will be tallied and compared against those of other users, and an analysis of your potential compatibility with those users will be displayed. 
 
-Enjoy!
+Link to Heroku page: https://friend-finder-bc-hw.herokuapp.com/
