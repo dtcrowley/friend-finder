@@ -9,7 +9,7 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res){
         var userInput = req.body;
         console.log("User input = " + JSON.stringify(userInput));
-        var userResponses = userInput.answers;
+        var userResponses = userInput.scores;
         console.log("User responses = " + userResponses)
 
         var matchName = "";
@@ -20,7 +20,7 @@ module.exports = function (app) {
             var diff = 0;
             
             for (var x = 0; x < userResponses.length; x++) {
-                diff += Math.abs(friends[i].answers[x] - userResponses[x]);
+                diff += Math.abs(friends[i].scores[x] - userResponses[x]);
             }
             console.log("Difference = " + diff);
 
